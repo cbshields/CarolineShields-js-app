@@ -3,7 +3,6 @@ class CreatePlayers < ActiveRecord::Migration[5.2]
     create_table :players do |t|
       t.string :name
       t.string :password_digest
-      t.string :string
       t.integer :age
       t.string :address
 
