@@ -1,5 +1,5 @@
 class Player < ApplicationRecord
   has_secure_password
-  has_many :teams
-  has_many :sports, :through teams
+  has_many :positions
+  has_many :sports, :through :positions
 end

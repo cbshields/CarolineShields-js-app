@@ -6,9 +6,8 @@ MODELS:
   -Sport
     -has_many :teams
     -has_many :players, through :teams
-    -Fields: Name, 
-  -Team
+    -Fields: Name,
+  -Position
     -belongs_to :player
     -belongs_to :sport
-    -Fields: Name, player_id, sport_id, position
-  
+    -Fields: Name, player_id, sport_id

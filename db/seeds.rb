@@ -17,5 +17,8 @@ sport3 = Sport.create(name: "Basketball")
 sport4 = Sport.create(name: "Hockey")
 sport5 = Sport.create(name: "Curling")
 
-team1 = Team.create(player_id: player1_id, sport_id: sport1_id, position: "middle")
-team2
+Position.create(name: "middle back", player_id: player1_id, sport_id: sport1_id)
+Position.create(name: "right field", player_id: player2_id, sport_id: sport2_id)
+Position.create(name: "libero", player_id: player3_id, sport_id: sport1_id)
+Position.create(name: "forward", player_id: player4_id, sport_id: sport3_id)
+Position.create(name: "main", player_id: player2_id, sport_id: sport5_id)
