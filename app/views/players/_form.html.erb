@@ -1,6 +1,21 @@
 <%= form_for @player do |f| %>
 
-Username: <%= f.text_field :name %><br>
+  <% if @player.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@player.errors.count, "error") %>
+        prohibited this post from being saved:
+      </h2>
+
+      <ul>
+      <% @player.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+Name: <%= f.text_field :name %><br>
 Password: <%= f.password_field :password %><br>
 Age: <%= f.number_field :age %><br>
 Address (Street, City, State): <%= f.text_field :address %><br>
