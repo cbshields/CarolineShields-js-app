@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   post '/logout' => 'session#destroy'
+
+  get '/sports' => 'sports#index'
   resources :postitons
   resources :sports
   resources :players
