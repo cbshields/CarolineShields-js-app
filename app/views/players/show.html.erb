@@ -5,6 +5,16 @@ Address: <%= @player.address %>
 
 <h2>Sports</h2>
 
+<!--
+How do I get the position to show up next to the sport name
 <% @player.sports.each do |sport| %>
-<li><%= link_to sport.name, sport_path(sport)%></li>
-<% end %>
+   <% sport.positions.each do |position| %>
+     <li><%= link_to sport.name + " - #{sport.positions.name}", sport_path(sport)%></li>
+   <% end %>
+<% end %> 
+
+-->
+
+<% @player.sports.each do |sport| %>
+     <li><%= link_to sport.name + " - <get position>", sport_path(sport)%></li>
+   <% end %>
