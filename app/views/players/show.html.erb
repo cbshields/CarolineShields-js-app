@@ -2,3 +2,9 @@
 
 Age: <%= @player.age %><br>
 Address: <%= @player.address %>
+
+<h2>Sports</h2>
+
+<% @player.sports.each do |sport| %>
+<li><%= link_to sport.name, sport_path(sport)%></li>
+<% end %>
