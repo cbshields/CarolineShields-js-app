@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-
+before_action :find_user, only: [:show, :edit, :update, :destroy]
   def index
     @players = Player.all
   end
@@ -18,15 +18,12 @@ class PlayersController < ApplicationController
   end
 
   def show
-    @player = Player.find(params[:id])
   end
 
   def edit
-    @player = Player.find(params[:id])
   end
 
   def update
-    @player = Player.find(params[:id])
     @player.update(player_params)
     if @player.save
       redirect_to player_path(@player)
@@ -34,7 +31,13 @@ class PlayersController < ApplicationController
       render :edit
     end
 
+  def destroy
+    @player.delete
+    redirect_to players_path
   end
+
+
+end #ends Controller
 
   private
   def player_params
@@ -47,5 +50,9 @@ class PlayersController < ApplicationController
       sports_attributes: [:name],
       position_ids:[],
       positions_attributes: [:name])
+  end
+
+  def find_user
+    @player = Player.find(params[:id])
   end
 end

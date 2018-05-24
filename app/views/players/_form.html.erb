@@ -35,6 +35,8 @@ Or add a different player position: <br>
 <%= f.fields_for :positions, player.positions.build do |position_fields| %>
 <%= position_fields.text_field :name %><br><br>
 <% end %>
+
+<!-- edit/delete button? -->
 <%= f.submit %>
 
 <% end %>
