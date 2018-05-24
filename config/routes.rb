@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   post '/logout' => 'session#destroy'
 
   get '/sports' => 'sports#index'
-  resources :postitons
+  get '/positions' => 'positions#index'
+  resources :positions
   resources :sports
   resources :players
 
