@@ -1,7 +1,7 @@
 class Player < ApplicationRecord
   has_secure_password
   validates :name, uniqueness: true
-  validates :name, :age, :address, :password, presence: true, on: :create
+  validates :name, :age, :address, :password_digest, presence: true, on: :create
   has_many :positions
   has_many :sports, through: :positions
 
@@ -10,9 +10,9 @@ class Player < ApplicationRecord
   def sports_attributes=(sport_attributes)
    sport_attributes.values.each do |sport_attribute|
      #better way to do this?
-     binding.pry
+
      if !sport_attribute[name].nil?
-       binding.pry
+
        sport = Sport.find_or_create_by(sport_attribute)
        self.sports << sport
      end
@@ -22,9 +22,9 @@ class Player < ApplicationRecord
  def positions_attributes=(position_attributes)
   position_attributes.values.each do |position_attribute|
     #better way to do this?
-    binding.pry
+
     if !position_attribute[name].nil?
-      binding.pry
+
       position = Position.find_or_create_by(position_attribute)
       self.positions << position
     end
