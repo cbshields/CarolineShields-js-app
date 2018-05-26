@@ -1,11 +1,11 @@
 MODELS:
   -Player
-    -has_many :teams
-    -has_many :sports, :through teams
+    -has_many :positions
+    -has_many :sports, :through positions
     -Fields: Name, Age, Address
   -Sport
-    -has_many :teams
-    -has_many :players, through :teams
+    -has_many :positions
+    -has_many :players, through :positions
     -Fields: Name,
   -Position
     -belongs_to :player
