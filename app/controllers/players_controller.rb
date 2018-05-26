@@ -47,6 +47,7 @@ end #ends Controller
       :password_digest,
       :age,
       :address,
+      #dont need this
       # sport_ids:[],
       # sports_attributes: [:name],
       position_ids:[],
