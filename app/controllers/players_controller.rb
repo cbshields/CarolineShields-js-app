@@ -10,13 +10,7 @@ before_action :find_user, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-    # binding.pry
-    # player_params = player_params[:player]
-    # sports_params = player_params[:sports]
-
-    # @sport = Sport.create(sports_params)
     @player = Player.create(player_params)
-    # Position.create(sport_id: @sport.id, player_id: @player.id)
     if @player.save
       redirect_to player_path(@player)
     else
