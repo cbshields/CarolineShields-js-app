@@ -1,7 +1,7 @@
 class Player < ApplicationRecord
   has_secure_password
   validates :name, uniqueness: true
-  validates :name, :age, :address, :password_digest, presence: true, on: :create
+  validates :name, :age, :address, :password, presence: true, on: :create
   has_many :positions
   has_many :sports, through: :positions
 

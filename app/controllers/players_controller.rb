@@ -11,7 +11,9 @@ before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def create
     @player = Player.create(player_params)
-    if @player.save
+    @sport = Sport.create(sport_params)
+    @position = Position.create(position_params)
+    if @player.save && @sport.save && @position.save
       redirect_to player_path(@player)
     else
       render :new
@@ -44,15 +46,17 @@ end #ends Controller
   def player_params
     params.require(:player).permit(
       :name,
-      :password_digest,
+      :password,
       :age,
       :address,
       #dont need this, why?
-      # sport_ids:[],
-      # sports_attributes: [:name],
-      position_ids:[],
-      positions_attributes: [:name])
+      #sport_ids:[],
+      #sports_attributes: [:name],
+      # position_ids:[],
+      # positions_attributes: [:name]
+      )
   end
+
 
   def find_user
     @player = Player.find(params[:id])
