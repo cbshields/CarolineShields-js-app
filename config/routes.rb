@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'players#index'
+  get '/signup' => 'players#new'
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   post '/logout' => 'session#destroy'

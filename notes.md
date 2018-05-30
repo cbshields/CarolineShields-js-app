@@ -13,8 +13,8 @@ MODELS:
     -Fields: Name, player_id, sport_id
 
     ========================================================
-    -Field_with_errors (_form) : is that what they want
-    -player\_form: should I even have sport and position as nested forms, or only have sport?
+    -Field_with_errors (_form) : is that what they want - YES
+    -player\_form: should I even have sport and position as nested forms, or only have sport? - have both
     -player\_form: edit link/delete button?
     -player\show:  how to have the sport and position listed
-    -can’t search github to save my life/what is the best way to search for code
+    

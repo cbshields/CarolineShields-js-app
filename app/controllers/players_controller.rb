@@ -45,6 +45,7 @@ end #ends Controller
     params.require(:player).permit(
       :name,
       :password,
+      :password_confirmation,
       :age,
       :address,
       #dont need this, why?

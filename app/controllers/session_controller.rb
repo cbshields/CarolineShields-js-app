@@ -5,12 +5,13 @@ class SessionController < ApplicationController
 
   def create
       @player = Player.find_by(name:params[:name])
-      #return head(:forbidden) unless @player.authenticate(params[:password])
-      session[:user_id] = @player.id
-      redirect_to player_path(@player)
-    else
-      render 'new'
-    end
+      return head(:forbidden) unless @player && @player.authenticate(params[:password])
+      if @player
+        session[:user_id] = @player.id
+        redirect_to player_path(@player)
+      else
+        render 'new'
+      end
   end
 
   def destroy
