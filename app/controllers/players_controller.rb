@@ -11,9 +11,7 @@ before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def create
     @player = Player.create(player_params)
-    @sport = Sport.create(sport_params)
-    @position = Position.create(position_params)
-    if @player.save && @sport.save && @position.save
+    if @player.save
       redirect_to player_path(@player)
     else
       render :new
