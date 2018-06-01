@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-before_action :find_user, only: [:show, :edit, :update, :destroy]
+before_action :find_user, :sign_in_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @players = Player.all
@@ -10,8 +10,11 @@ before_action :find_user, only: [:show, :edit, :update, :destroy]
   end
 
   def create
+
     @player = Player.create(player_params)
+    binding.pry
     if @player.save
+      session[:user_id] = @player.id
       redirect_to player_path(@player)
     else
       render :new
@@ -48,11 +51,11 @@ end #ends Controller
       :password_confirmation,
       :age,
       :address,
-      #dont need this, why?
+      #where to add these
       #sport_ids:[],
-      #sports_attributes: [:name],
+      sports_attributes: [:name, :id],
       # position_ids:[],
-      # positions_attributes: [:name]
+      positions_attributes: [:name, :id]
       )
   end
 

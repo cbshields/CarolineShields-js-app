@@ -1,3 +1,7 @@
+<% if flash[:alert] %>
+  <%= flash[:alert] %><br>
+<% end %><br>
+
 <%= form_for @player do |f| %>
 
   <% if @player.errors.any? %>
@@ -24,9 +28,10 @@ Address (Street, City, State): <%= f.text_field :address %><br>
 <h3>Select a Sport</h3>
 <!-- how do I get it to select the sport, then the position -->
 
-<%= f.collection_check_boxes :sport_ids, Sport.all, :id, :name %><br><br>
+
 Or add a different sport: <br>
 <%= f.fields_for :sports, player.sports.build do |sport_fields| %>
+<%= f.collection_check_boxes :sport_ids, Sport.all, :id, :name %><br><br>
 <%= sport_fields.text_field :name %><br><br>
 <% end %>
 
