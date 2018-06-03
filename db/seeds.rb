@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-player1 = Player.create(name: "Rob Falton", age: 27, address: "1 wok way, chinatown, PA", password: "iloverails")
-player2 = Player.create(name: "Cary Grant", age: 44, address: "444 Hollywood Ave, Hollywood, CA", password: "iloverails")
-player3 = Player.create(name: "Don Johnson", age: 34, address: "44 Sunset Lane, Portland, OR", password: "iloverails")
-player4 = Player.create(name: "Jimmy Li", age: 40, address: "8973 Windsor St, San Francisco, CA", password: "iloverails")
+player1 = Player.create(name: "Rob Falton", age: 15, address: "1 wok way, chinatown, PA", password: "iloverails")
+player2 = Player.create(name: "Cary Grant", age: 13, address: "444 Hollywood Ave, Hollywood, CA", password: "iloverails")
+player3 = Player.create(name: "Don Johnson", age: 21, address: "44 Sunset Lane, Portland, OR", password: "iloverails")
+player4 = Player.create(name: "Jimmy Li", age: 12, address: "8973 Windsor St, San Francisco, CA", password: "iloverails")
 
 sport1 = Sport.create(name: "Volleyball")
 sport2 = Sport.create(name: "Baseball")
