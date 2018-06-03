@@ -1,5 +1,5 @@
 class PlayersController < ApplicationController
-before_action :find_user, :sign_in_user, only: [:show, :edit, :update, :destroy]
+before_action :find_user, :sign_in_user, only: [:index, :show, :edit, :update, :destroy]
 
   def index
     @players = Player.all
