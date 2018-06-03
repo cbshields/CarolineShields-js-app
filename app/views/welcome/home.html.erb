@@ -1,0 +1,10 @@
+<h1>Scottsdale Sports</h1>
+
+<% if session[:user_id] %>
+  Welcome to our site, <%=@player.name %>, please select where you would like to go:<br>
+
+  <%= link_to "Players", players_path %>    <%= link_to "Sports", sports_path %>
+<% else %>
+
+<a href="/signup">Sign Up</a>   <a href="/login">Log In</a> or <a href="/auth/facebook">LogIn with Facebook</a>
+<% end %>

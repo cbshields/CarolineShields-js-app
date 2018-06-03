@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  root 'welcome#show'
+  root 'welcome#home'
   get '/signup' => 'players#new'
   get '/login' => 'session#new'
   post '/login' => 'session#create'
+  get '/auth/facebook/callback' => 'session#facebook_session'
   post '/logout' => 'session#destroy'
 
   get '/sports' => 'sports#index'

@@ -31,6 +31,14 @@ gem 'pry'
 
 gem 'rack-flash3'
 
+gem 'thin'
+
+gem 'omniauth'
+
+gem 'omniauth-facebook'
+
+gem 'dotenv-rails'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

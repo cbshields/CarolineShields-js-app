@@ -13,7 +13,6 @@ MODELS:
     -Fields: Name, player_id, sport_id
 
     ========================================================
-    -Field_with_errors (_form) : is that what they want - YES
-    -player\_form: should I even have sport and position as nested forms, or only have sport? - have both
-    -player\_form: edit link/delete button?
-    -player\show:  how to have the sport and position listed
+  Facebook Authentication (Facebook dev)
+  -change the website address to work pc ip Address
+  -change Valid Oauth redirect URI to use local ip adddress: https://192.168.1.175:3000/auth/facebook/callback

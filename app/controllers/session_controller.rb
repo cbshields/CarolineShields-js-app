@@ -14,9 +14,25 @@ class SessionController < ApplicationController
       end
   end
 
+  def facebook_session
+    @player = Player.find_by(uid: auth['uid'])#_or_create_by(uid: auth['uid']) do |player|
+      if !@player
+      @player = Player.new(name: auth['info']['name'])
+      binding.pry
+        render '/players/new'
+      else
+         session[:user_id] = @player.id
+         redirect_to root_path
+      end
+  end
+
   def destroy
     session.delete("user_id")
     redirect_to root_path
   end
 
+  private
+    def auth
+      request.env['omniauth.auth']
+    end
 end

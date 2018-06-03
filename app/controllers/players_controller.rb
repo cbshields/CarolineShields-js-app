@@ -6,7 +6,11 @@ before_action :find_user, :sign_in_user, only: [:index, :show, :edit, :update, :
   end
 
   def new
-    @player = Player.new
+    binding.pry
+    if @player.name.nil?
+      @player = Player.new
+    end
+    
   end
 
   def create
@@ -60,6 +64,6 @@ end #ends Controller
 
 
   def find_user
-    @player = Player.find(params[:id])
+    @player = Player.find(session[:user_id])
   end
 end
