@@ -1,7 +1,11 @@
 <h1>Positions</h1>
-  <ul>
 
-  <% @positions.each do |position| %>
-    <li> <%= link_to position.name, position_path(position) %> </li>
+#how to indent
+<ul>
+  <% @sports.each do |sport| %>
+    <%= sport.name %>
+    <% sport.positions.each do |position| %>
+      <li> <%= link_to position.name, position_path(position) %> </li>
     <% end %>
+  <% end %>
   </ul>
