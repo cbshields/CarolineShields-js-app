@@ -1,12 +1,15 @@
+
 <% if flash[:alert] %>
-  <%= flash[:alert] %><br>
+  <div style="color:red">
+    <%= flash[:alert] %><br>
+  </div>
 <% end %><br>
 
 <%= form_for @player do |f| %>
 
   <% if @player.errors.any? %>
     <div id="error_explanation">
-      <h2>
+      <h2 style="color:red">
         <%= pluralize(@player.errors.count, "error") %>
         prohibited this post from being saved:
       </h2>

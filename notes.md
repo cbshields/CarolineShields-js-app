@@ -15,4 +15,6 @@ MODELS:
     ========================================================
   Facebook Authentication (Facebook dev)
   -change the website address to work pc ip Address
-  -change Valid Oauth redirect URI to use local ip adddress: https://192.168.1.175:3000/auth/facebook/callback
+  -change Valid Oauth redirect URI to use:
+  work: https://192.168.56.101:3000/auth/facebook/callback
+  home:  https://192.168.1.175:3000/auth/facebook/callback

@@ -17,9 +17,8 @@ class SessionController < ApplicationController
   def facebook_session
     @player = Player.find_by(uid: auth['uid'])#_or_create_by(uid: auth['uid']) do |player|
       if !@player
-      @player = Player.new(name: auth['info']['name'])
-      binding.pry
-        render '/players/new'
+      session[:tmpname] = auth['info']['name']
+        redirect_to new_player_path
       else
          session[:user_id] = @player.id
          redirect_to root_path

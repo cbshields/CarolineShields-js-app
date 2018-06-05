@@ -1,16 +1,20 @@
 class PlayersController < ApplicationController
 before_action :find_user, :sign_in_user, only: [:index, :show, :edit, :update, :destroy]
+before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @players = Player.all
+    @over_18 = Player.over_18
+    @under_18 = Player.under_18
   end
 
   def new
-    binding.pry
-    if @player.name.nil?
+    if !session[:tmpname]
       @player = Player.new
+    else
+      @player = Player.new(name: session[:tmpname])
     end
-    
+
   end
 
   def create
