@@ -1,4 +1,10 @@
-<%= form_tag('/login', method: :post) do %>
+<% if flash[:alert] %>
+  <div style="color:red">
+    <%= flash[:alert] %><br>
+  </div>
+  <% end %><br>
+
+<%= form_tag('/login') do %>
 
 
     <%= label_tag(:name, "Your name:") %><br>
@@ -12,7 +18,7 @@
 
 
 
-    <%= submit_tag("Sign In") %><br>
+    <%= submit_tag("Log In") %><br>
 
 Don't have an account, <a href="/signup">create one here</a> <br>
 

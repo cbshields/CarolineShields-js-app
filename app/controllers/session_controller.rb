@@ -4,7 +4,8 @@ class SessionController < ApplicationController
   end
 
   def create
-      @player = Player.find_by(name:params[:name])
+      @player = Player.find_by(params[:name])
+      #how to make this not as crazy
       return head(:forbidden) unless @player && @player.authenticate(params[:password])
       if @player
         session[:user_id] = @player.id
@@ -15,7 +16,7 @@ class SessionController < ApplicationController
   end
 
   def facebook_session
-    @player = Player.find_by(uid: auth['uid'])#_or_create_by(uid: auth['uid']) do |player|
+    @player = Player.find_by(uid: auth['uid'])
       if !@player
       session[:tmpname] = auth['info']['name']
         redirect_to new_player_path
