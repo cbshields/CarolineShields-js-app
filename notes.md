@@ -18,3 +18,6 @@ MODELS:
   -change Valid Oauth redirect URI to use:
   work: https://192.168.56.101:3000/auth/facebook/callback
   home:  https://192.168.1.175:3000/auth/facebook/callback
+
+  Try adding team_params and position_params as part of the Player.create.
+  Move the attribute writers into the correct model
