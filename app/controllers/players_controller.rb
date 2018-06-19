@@ -63,11 +63,10 @@ end #ends Controller
       :password_confirmation,
       :age,
       :address,
+      :uid
       #where to add these
       #sport_ids:[],
-      sports_attributes: [:name, :id],
       # position_ids:[],
-      positions_attributes: [:name, :id]
       )
   end
 

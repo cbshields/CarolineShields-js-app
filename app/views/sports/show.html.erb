@@ -1,5 +1,9 @@
 <h1><%=@sport.name%></h1>
 
 <% @sport.players.each do |player| %>
-<li><%= link_to player.name, player_path(player) %></li>
+<li><%= link_to player.name, player_path(player) %></li><br><br>
 <% end %>
+
+<%= link_to "Edit Sport", edit_sport_url%> &nbsp &nbsp<%= link_to "Delete Sport", @sport, method: :delete, data: { confirm: "Are you sure you want to delete this sport?" } %> &nbsp &nbsp<%=link_to "Go To Players", players_path %> &nbsp &nbsp <%=link_to "Go To Sports", sports_path %><br><br>
+
+   
