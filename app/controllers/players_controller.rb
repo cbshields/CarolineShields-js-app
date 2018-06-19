@@ -1,6 +1,6 @@
 class PlayersController < ApplicationController
-before_action :find_user, :sign_in_user, only: [:index, :show, :edit, :update, :destroy]
-before_action :find_user, only: [:show, :edit, :update, :destroy]
+before_action :sign_in_user, only: [:index, :show, :edit, :update, :destroy]
+before_action :find_user, only: [:edit, :update, :destroy]
 
   def index
     @players = Player.all
@@ -12,7 +12,7 @@ before_action :find_user, only: [:show, :edit, :update, :destroy]
     if !session[:tmpname]
       @player = Player.new
     else
-      @player = Player.new(name: session[:tmpname])
+      @player = Player.new(name: session[:tmpname], uid: session[:uid])
     end
 
   end
@@ -20,9 +20,9 @@ before_action :find_user, only: [:show, :edit, :update, :destroy]
   def create
 
     @player = Player.create(player_params)
-    @sport = Sport.create(sport_params)
-    @position = Position.create(position_params)
-    binding.pry
+    # @sport = Sport.create(sport_params)
+    # @position = Position.create(position_params)
+
     if @player.save
       session[:user_id] = @player.id
       redirect_to player_path(@player)
@@ -32,6 +32,7 @@ before_action :find_user, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    @player = Player.find(params[:id])
   end
 
   def edit
@@ -46,6 +47,7 @@ before_action :find_user, only: [:show, :edit, :update, :destroy]
     end
 
   def destroy
+    session.delete("user_id")
     @player.delete
     redirect_to players_path
   end

@@ -18,7 +18,8 @@ class SessionController < ApplicationController
   def facebook_session
     @player = Player.find_by(uid: auth['uid'])
       if !@player
-      session[:tmpname] = auth['info']['name']
+        session[:tmpname] = auth['info']['name']
+        session[:uid] = auth['uid']
         redirect_to new_player_path
       else
          session[:user_id] = @player.id
