@@ -5,8 +5,15 @@ class SessionController < ApplicationController
 
   def create
       @player = Player.find_by(params[:name])
-      #how to make this not as crazy
-      return head(:forbidden) unless @player && @player.authenticate(params[:password])
+      #how to make this not as crazy, use flash[:alert] instead
+
+     return head(:forbidden) unless @player && @player.authenticate(params[:password])
+
+        # flash[:alert] = "Your username or password is not correct, please try again"
+        # redirect_to login_path
+    
+
+
       if @player
         session[:user_id] = @player.id
         redirect_to player_path(@player)

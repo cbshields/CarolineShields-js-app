@@ -1,5 +1,6 @@
 <h1>Scottsdale Sports</h1>
 
+
 <% if session[:user_id] %>
   Welcome to our site, <%=@player.name %>, please select where you would like to go:<br>
 
@@ -10,5 +11,5 @@
     <% end %>
 <% else %>
 
-<a href="/signup">Sign Up</a> &nbsp &nbsp  <a href="/login">Log In</a> &nbsp or &nbsp <a href="/auth/facebook">LogIn with Facebook</a>
+<a href="/signup">Sign Up</a> &nbsp &nbsp  <a href="/login">Log In</a> &nbsp or &nbsp <a href="/auth/facebook">LogIn with Facebook</a><br><br>
 <% end %>
