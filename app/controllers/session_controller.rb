@@ -7,19 +7,14 @@ class SessionController < ApplicationController
       @player = Player.find_by(params[:name])
       #how to make this not as crazy, use flash[:alert] instead
 
-     return head(:forbidden) unless @player && @player.authenticate(params[:password])
-
-        # flash[:alert] = "Your username or password is not correct, please try again"
-        # redirect_to login_path
-    
+    if !(@player && @player.authenticate(params[:password]))
+      redirect_to login_url, alert: "Your username or password is not correct, please try again" and return
+    end
 
 
-      if @player
         session[:user_id] = @player.id
         redirect_to player_path(@player)
-      else
-        render 'new'
-      end
+
   end
 
   def facebook_session
