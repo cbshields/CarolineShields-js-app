@@ -9,6 +9,7 @@ before_action :find_user, only: [:edit, :update, :destroy]
   end
 
   def new
+    render :layout => "session"
     if !session[:tmpname]
       @player = Player.new
     else
@@ -18,11 +19,9 @@ before_action :find_user, only: [:edit, :update, :destroy]
   end
 
   def create
-
+    #binding.pry
     @player = Player.create(player_params)
-    # @sport = Sport.create(sport_params)
-    # @position = Position.create(position_params)
-
+    binding.pry
     if @player.save
       session[:user_id] = @player.id
       redirect_to player_path(@player)
@@ -63,26 +62,14 @@ end #ends Controller
       :password_confirmation,
       :age,
       :address,
-      :uid
-      #where to add these
-      #sport_ids:[],
-      # position_ids:[],
+      :uid,
+      sport_ids:[],
+      sports_attributes:[:name],
+      position_ids:[],
+      positions_attributes:[:name]
       )
   end
 
-  def sport_params
-      sports = params[:player][:sport_ids]
-      sports.each do |sport|
-          if sport != ""
-            binding.pry
-            params.require(:sport).permit(:name, sports_attributes:[:name])
-          end
-      end
-  end
-
-  def position_params
-      params.require(:position).permit(:name, positions_attributes: [:name])
-  end
   def find_user
     @player = Player.find(session[:user_id])
   end
