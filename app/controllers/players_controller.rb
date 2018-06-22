@@ -2,6 +2,7 @@ class PlayersController < ApplicationController
 before_action :sign_in_user, only: [:index, :show, :edit, :update, :destroy]
 before_action :find_user, only: [:edit, :update, :destroy]
 
+
   def index
     @players = Player.all
     @over_18 = Player.over_18
@@ -9,17 +10,16 @@ before_action :find_user, only: [:edit, :update, :destroy]
   end
 
   def new
-    render :layout => "session"
     if !session[:tmpname]
       @player = Player.new
     else
       @player = Player.new(name: session[:tmpname], uid: session[:uid])
     end
 
+    render :layout => "session"
   end
 
   def create
-    #binding.pry
     @player = Player.create(player_params)
     binding.pry
     if @player.save
@@ -35,10 +35,12 @@ before_action :find_user, only: [:edit, :update, :destroy]
   end
 
   def edit
+    render :layout => "session"
   end
 
   def update
     @player.update(player_params)
+    binding.pry
     if @player.save
       redirect_to player_path(@player)
     else
@@ -73,4 +75,5 @@ end #ends Controller
   def find_user
     @player = Player.find(session[:user_id])
   end
+
 end

@@ -23,8 +23,8 @@ Address (Street, City, State): <%= f.text_field :address %><br>
 
 
 
-<h2>Original</h2>
-<%= f.collection_check_boxes :sport_ids, Sport.all, :id, :name %><br><br>
+<h2>Select a Sport:</h2>
+<%= f.collection_check_boxes :sport_ids, Sport.all, :id, :name,:include_hidden => false%><br><br>
 
 Or add a different sport: <br>
 <%= f.fields_for :sports, player.sports.build do |sport_fields| %>
@@ -32,7 +32,7 @@ Or add a different sport: <br>
 <% end %>
 
 <h3>Select a Position</h3>
-<%= f.collection_check_boxes :position_ids, Position.all, :id, :name %><br><br>
+<%= f.collection_check_boxes :position_ids, Position.all, :id, :name, :include_hidden => false%><br><br>
 Or add a different player position: <br>
 <%= f.fields_for :positions, player.positions.build do |position_fields| %>
 <%= position_fields.text_field :name %><br><br>
