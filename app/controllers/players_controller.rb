@@ -21,7 +21,7 @@ before_action :find_user, only: [:edit, :update, :destroy]
 
   def create
     @player = Player.create(player_params)
-    binding.pry
+    # binding.pry
     if @player.save
       session[:user_id] = @player.id
       redirect_to player_path(@player)

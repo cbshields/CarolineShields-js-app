@@ -16,8 +16,10 @@
       </div>
       <% end %><br>
     <%= yield %>
+    <% if session[:user_id]%>
     <%= form_tag ({controller: 'session', action: 'destroy', method: 'post'}) do %>
       <input type=submit value='logout'>
       <% end %>
+    <% end %>
   </body>
 </html>

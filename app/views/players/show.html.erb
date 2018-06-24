@@ -8,10 +8,11 @@ Address: <%= @player.address %>
 <!-- how do I use rails console to drill down through the associations?
 ie: @player=Player.find(1),@player.sports.find(1).positions -->
 
-<% @player.positions.each do |position| %>
-     <% position.sports.each do |sport| %>
-       <li><%= link_to "#{sport.name} - #{position.name}", sport_url(sport)%></li>
 
+
+       <% @player.sports.each do |sport| %>
+          <% sport.positions.each do |position| %>
+              <li><%= link_to "#{sport.name} - #{position.name}", sport_url(sport)%></li>
     <% end %>
  <% end %><br><br>
 
