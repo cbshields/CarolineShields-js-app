@@ -21,7 +21,21 @@ before_action :find_user, only: [:edit, :update, :destroy]
 
   def create
     @player = Player.create(player_params)
-    # binding.pry
+    params[:player][:position_ids].each do |position_id|
+      position = Position.find(position_id)
+      @player.positions << position
+    end
+
+    #have to figure out how to add new positions
+
+    @player.positions.each do |position|
+      binding.pry
+      if position.name.nil?
+          binding.pry
+        position.delete
+      end
+    end
+
     if @player.save
       session[:user_id] = @player.id
       redirect_to player_path(@player)
@@ -40,7 +54,7 @@ before_action :find_user, only: [:edit, :update, :destroy]
 
   def update
     @player.update(player_params)
-    binding.pry
+
     if @player.save
       redirect_to player_path(@player)
     else
@@ -67,8 +81,8 @@ end #ends Controller
       :uid,
       sport_ids:[],
       sports_attributes:[:name],
-      position_ids:[],
-      positions_attributes:[:name]
+      # position_ids:[],
+    #  positions_attributes:[:name]
       )
   end
 
