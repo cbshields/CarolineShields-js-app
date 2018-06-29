@@ -21,6 +21,7 @@ before_action :find_user, only: [:edit, :update, :destroy]
 
   def create
     @player = Player.create(player_params)
+    binding.pry
     params[:player][:position_ids].each do |position_id|
       position = Position.find(position_id)
       @player.positions << position
@@ -79,10 +80,10 @@ end #ends Controller
       :age,
       :address,
       :uid,
+      new_position:[:name],
       sport_ids:[],
       sports_attributes:[:name],
-      # position_ids:[],
-    #  positions_attributes:[:name]
+      positions_attributes:[:name]
       )
   end
 

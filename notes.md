@@ -21,3 +21,5 @@ MODELS:
 
   Try adding team_params and position_params as part of the Player.create.
   Move the attribute writers into the correct model
+
+  <input type="text" name="new_position[name]"><br><br>
