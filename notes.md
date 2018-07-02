@@ -23,3 +23,11 @@ MODELS:
   Move the attribute writers into the correct model
 
   <input type="text" name="new_position[name]"><br><br>
+
+  Player Form
+
+  Sport
+    Checkbox Volleyball
+      Checkbox Position 1
+      Checkbox Position 2
+      Text_Field 

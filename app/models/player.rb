@@ -8,7 +8,6 @@ scope :over_18, lambda {where('age >= ?',18)}
   has_many :sports, through: :positions
 
 
-
   def sports_attributes=(sport_attributes)
    sport_attributes.values.each do |sport_attribute|
       if !sport_attribute[:name].empty?
