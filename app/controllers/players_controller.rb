@@ -20,43 +20,10 @@ before_action :find_user, only: [:edit, :update, :destroy]
   end
 
   def create
-    @player = Player.create(player_params)
     binding.pry
+    @player = Player.create(player_params)
 
-    new_position_name = params[:player][:positions_attributes]["0"]["name"]
-    new_sport = params[:player][:positions_attributes]["0"]["name"]
-    if(!new_sport)
-      sport = Sport.find_or_create_by(name: new_sport)
-      position = Position.create(name: new_position_name, player_id: @player.id, sport_id: sport.id)
-    end
 
-    sports = params[:player][:sports_ids]
-    if(sports)
-      sports.each do |sport|
-        sport = Sport.find(sport.id)
-        position = Position.create(name: new_position_name, player_id: @player.id, sport_id: sport.id)
-      end
-    end
-
-    # new_position_name = params[:player][:positions_attributes]["0"]["name"]
-    # if(!params[:player][:positions_attributes]["0"]["name"])
-    #   position = Position.create(name: new_position_name, player_id: @player.id, sport_id)
-    # end
-
-    params[:player][:position_ids].each do |position_id|
-      position = Position.find(position_id)
-      @player.positions << position
-    end
-
-    #have to figure out how to add new positions
-
-    @player.positions.each do |position|
-      binding.pry
-      if position.name.nil?
-          binding.pry
-        position.delete
-      end
-    end
 
     if @player.save
       session[:user_id] = @player.id
@@ -103,7 +70,7 @@ end #ends Controller
       :uid,
       new_position:[:name],
       sport_ids:[],
-      #position_ids:[],
+      position_ids:[],
       sports_attributes:[:name],
       positions_attributes:[:name]
       )

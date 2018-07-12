@@ -19,16 +19,6 @@ scope :over_18, lambda {where('age >= ?',18)}
  end
 
 
-  def positions_attributes=(position_attributes)
-   position_attributes.values.each do |position_attribute|
-
-       if !position_attribute[:name].empty?
-         binding.pry
-       position = Position.find_or_create_by(position_attribute)
-       self.positions << position
-     end
-   end
- end
 
 
 
