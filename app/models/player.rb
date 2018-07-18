@@ -7,19 +7,22 @@ scope :over_18, lambda {where('age >= ?',18)}
   has_many :positions
   has_many :sports, through: :positions
 
+  accepts_nested_attributes_for :positions, reject_if: :all_blank
 
-  def sports_attributes=(sport_attributes)
-   sport_attributes.values.each do |sport_attribute|
-      if !sport_attribute[:name].empty?
-
-       sport = Sport.find_or_create_by(sport_attribute)
-       self.sports << sport
-     end
-   end
- end
-
-
-
-
+   def positions_attributes=(positions_attributes)
+    positions_attributes.values.each do |position_attributes|
+       if !position_attributes[:name].empty? && position_attributes[:sport_id].empty?
+        position = Position.find_or_create_by(name: position_attributes[:name])
+        new_sport = Sport.new(position_attributes[:sport_attributes])
+        if new_sport.save
+          position.sport = new_sport
+          self.positions << position
+         end
+       elsif !position_attributes[:name].empty?
+         position = Position.find_or_create_by(name: position_attributes[:name], sport_id: position_attributes[:sport_id])
+         self.positions << position
+      end
+    end
+  end
 
 end

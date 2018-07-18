@@ -10,20 +10,17 @@ before_action :find_user, only: [:edit, :update, :destroy]
   end
 
   def new
-    if !session[:tmpname]
-      @player = Player.new
-    else
-      @player = Player.new(name: session[:tmpname], uid: session[:uid])
-    end
+    @player = Player.new(name: session[:tmpname], uid: session[:uid])
+      5.times do
+        @position = @player.positions.build
+        @sport = @position.build_sport
+      end
 
     render :layout => "session"
   end
 
   def create
-    binding.pry
     @player = Player.create(player_params)
-
-
 
     if @player.save
       session[:user_id] = @player.id
@@ -42,6 +39,7 @@ before_action :find_user, only: [:edit, :update, :destroy]
   end
 
   def update
+
     @player.update(player_params)
 
     if @player.save
@@ -68,11 +66,7 @@ end #ends Controller
       :age,
       :address,
       :uid,
-      new_position:[:name],
-      sport_ids:[],
-      position_ids:[],
-      sports_attributes:[:name],
-      positions_attributes:[:name]
+      positions_attributes:[:name, :sport_id, :sport_attributes => [:name]]
       )
   end
 
