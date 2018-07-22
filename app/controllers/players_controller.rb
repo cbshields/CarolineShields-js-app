@@ -47,15 +47,21 @@ before_action :find_user, only: [:edit, :update, :destroy]
     else
       render :edit
     end
-
-  def destroy
-    session.delete("user_id")
-    @player.delete
-    redirect_to players_path
   end
 
+  def destroy
+    @player = Player.find(params[:id])
+    if @player.id == session["user_id"]
+      session.delete("user_id")
+      @player.delete
+      redirect_to root_url
+    else
+      redirect_to players_path, alert: "You do not have access to delete that account."
+    end
 
-end #ends Controller
+  end
+
+ #ends Controller
 
   private
   def player_params
@@ -66,7 +72,7 @@ end #ends Controller
       :age,
       :address,
       :uid,
-      positions_attributes:[:name, :sport_id, :sport_attributes => [:name]]
+      positions_attributes:[:name, :sport_id, :sport, :sport_attributes => [:name]]
       )
   end
 

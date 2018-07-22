@@ -5,14 +5,13 @@ use Rack::Flash
 
 
 
-  private
     def sign_in_user
       unless logged_in?
         #flash[:message] = "Account not found, please create new account"
-        redirect_to signup_url, alert: "Account not found, please create new account"
+        redirect_to signup_url, alert: "Please create a new account"
       end
-
     end
+
     def logged_in?
       !!current_user
     end

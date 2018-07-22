@@ -5,16 +5,13 @@ Address: <%= @player.address %>
 
 <h2>Sports</h2>
 
-<!-- how do I use rails console to drill down through the associations?
-ie: @player=Player.find(1),@player.sports.find(1).positions
-
--->
+<ul>
 
 <% @player.sports.each do |sport| %>
-
-   <% @player.positions.each do |position| %>
-     <li><%= link_to sport.name + " - #{position.name}", sport_path(sport)%></li>
+  <h3>  <%= link_to sport.name, sport_path(sport) %> </h3>
+   <% sport.positions.each do |position| %>
+     <li><%= link_to position.name, position_path(position)%></li>
    <% end %>
 <% end %><br><br>
-
-<%= link_to "Edit Player", edit_player_url%> &nbsp &nbsp<%= link_to "Delete Player", @player, method: :delete, data: { confirm: "Are you sure you want to delete this player?" } %> &nbsp &nbsp<%=link_to "Go To Players", players_path %> &nbsp &nbsp <%=link_to "Go To Sports", sports_path %><br><br>
+</ul>
+<%= link_to "Edit Player", edit_player_url%> &nbsp &nbsp<%= link_to "Delete Player", @player, :method => :delete, data: { confirm: "Are you sure you want to delete this player: #{@player.name}?" } %> &nbsp &nbsp<%=link_to "Go To Players", players_path %> &nbsp &nbsp <%=link_to "Go To Sports", sports_path %><br><br>

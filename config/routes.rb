@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   get '/auth/facebook/callback' => 'session#facebook_session'
   post '/logout' => 'session#destroy'
+  
 
   get '/sports' => 'sports#index'
   get '/positions' => 'positions#index'
