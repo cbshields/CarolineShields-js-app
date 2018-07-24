@@ -7,10 +7,13 @@ Address: <%= @player.address %>
 
 <ul>
 
-<% @player.sports.each do |sport| %>
+<% @player.sports.uniq.each do |sport| %>
   <h3>  <%= link_to sport.name, sport_path(sport) %> </h3>
    <% sport.positions.each do |position| %>
-     <li><%= link_to position.name, position_path(position)%></li>
+      <% if position.player_id == @player.id %>
+        <li><%= link_to position.name, position_path(position)%></li>
+      <% end %>
+
    <% end %>
 <% end %><br><br>
 </ul>

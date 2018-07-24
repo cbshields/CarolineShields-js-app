@@ -2,7 +2,6 @@ class Player < ApplicationRecord
 scope :under_18, lambda {where('age < ?',18)}
 scope :over_18, lambda {where('age >= ?',18)}
   has_secure_password
-  validates :name, uniqueness: true
   validates :name, :age, :address, :password, presence: true, on: :create
   has_many :positions
   has_many :sports, through: :positions
@@ -11,10 +10,9 @@ scope :over_18, lambda {where('age >= ?',18)}
 
    def positions_attributes=(positions_attributes)
     positions_attributes.values.each do |position_attributes|
-       if !position_attributes[:name].empty? #|| position_attributes[:sport_id].empty?
-         binding.pry
+       if !position_attributes[:name].empty? && position_attributes[:sport_id].empty?
         position = Position.find_or_create_by(name: position_attributes[:name])
-        new_sport = Sport.new(position_attributes[:sport_attributes])
+        new_sport = Sport.new(name: position_attributes[:sport][:name])
         if new_sport.save
           position.sport = new_sport
           self.positions << position

@@ -21,8 +21,9 @@ before_action :find_user, only: [:edit, :update, :destroy]
 
   def create
     @player = Player.create(player_params)
-
+    @player.uid = session[:uid]
     if @player.save
+
       session[:user_id] = @player.id
       redirect_to player_path(@player)
     else
@@ -35,6 +36,10 @@ before_action :find_user, only: [:edit, :update, :destroy]
   end
 
   def edit
+    1.times do
+      @position = @player.positions.build
+      @sport = @position.build_sport
+    end
     render :layout => "session"
   end
 
@@ -72,7 +77,7 @@ before_action :find_user, only: [:edit, :update, :destroy]
       :age,
       :address,
       :uid,
-      positions_attributes:[:name, :sport_id, :sport, :sport_attributes => [:name]]
+      positions_attributes:[:name, :sport_id, :sport => [:name]]
       )
   end
 
