@@ -19,15 +19,5 @@ MODELS:
   work: https://192.168.56.101:3000/auth/facebook/callback
   home: https://192.168.1.12:3000/auth/facebook/callback
 
-  Try adding team_params and position_params as part of the Player.create.
-  Move the attribute writers into the correct model
-
-  <input type="text" name="new_position[name]"><br><br>
-
-  Player Form
-
-  Sport
-    Checkbox Volleyball
-      Checkbox Position 1
-      Checkbox Position 2
-      Text_Field 
+  Nested route for Position
+  Nested route for edit/new form
