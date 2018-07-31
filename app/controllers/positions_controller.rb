@@ -1,10 +1,13 @@
 class PositionsController < ApplicationController
-before_action :find_position, only: [:show, :edit, :update, :destroy]
+before_action :find_position, only: [:show,:edit, :update, :destroy]
+before_action :find_player, only: [:index, :show, :edit]
   def index
-    @player = Player.find(params[:player_id])
   end
 
   def show
+  end
+
+  def edit
   end
 
   private
@@ -12,6 +15,8 @@ before_action :find_position, only: [:show, :edit, :update, :destroy]
     @position = Position.find(params[:id])
   end
 
-
+  def find_player
+    @player = Player.find(params[:player_id])
+  end
 
 end #Ends PositionsController
