@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/login' => 'session#create'
   get '/auth/facebook/callback' => 'session#facebook_session'
   post '/logout' => 'session#destroy'
-  
+
 
   get '/sports' => 'sports#index'
   get '/positions' => 'positions#index'
@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resources :sports
   resources :players
 
+
+resources :players do
+  resources :positions, only: [:index]
+end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
