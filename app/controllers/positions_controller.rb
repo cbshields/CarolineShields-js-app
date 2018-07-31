@@ -1,10 +1,7 @@
 class PositionsController < ApplicationController
 before_action :find_position, only: [:show, :edit, :update, :destroy]
   def index
-    @player = 
-    @sports = Sport.all
-    @positions = Position.all
-
+    @player = Player.find(params[:player_id])
   end
 
   def show

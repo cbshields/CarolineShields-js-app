@@ -4,7 +4,7 @@
 
 
 <% @player.positions.uniq.each do |position| %>
-  <h3>  <%= link_to position.name, position_path(position) %> </h3>
+  <h3>  <%= position.name%> </h3>
 
 <% end %><br><br>
 </ul>

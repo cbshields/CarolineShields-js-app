@@ -11,7 +11,7 @@ Address: <%= @player.address %>
   <h3>  <%= link_to sport.name, sport_path(sport) %> </h3>
    <% sport.positions.each do |position| %>
       <% if position.player_id == @player.id %>
-        <li><%= link_to position.name, position_path(position)%></li>
+        <li><%= link_to position.name, player_positions_path(@player)%></li>
       <% end %>
 
    <% end %>
