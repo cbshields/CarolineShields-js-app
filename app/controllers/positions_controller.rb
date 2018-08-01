@@ -1,6 +1,7 @@
 class PositionsController < ApplicationController
 before_action :find_position, only: [:show,:edit, :update, :destroy]
-before_action :find_player, only: [:index, :show, :edit]
+before_action :find_player, only: [:index, :edit]
+
   def index
   end
 
@@ -8,6 +9,10 @@ before_action :find_player, only: [:index, :show, :edit]
   end
 
   def edit
+  end
+
+  def update
+
   end
 
   private
