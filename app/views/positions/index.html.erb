@@ -1,11 +1,13 @@
-<h1>Positions: <%=@player.name%></h1>
+<h1>Positions</h1>
 
 <ul>
 
 
-<% @player.positions.uniq.each do |position| %>
-
-  <h3>  <%= link_to position.name, player_position_path(position.id)%> </h3>
+<% @positions.each do |position| %>
+<!-- why can't I use display_player(position) -->
+  <h3>  <%=position.player.name%> - <%= link_to position.name, position_path(position)%> </h3>
 
 <% end %><br><br>
-</ul>
+</ul><br>
+
+<%= link_to "Add New Position", new_player_position_path %>

@@ -1,16 +1,16 @@
 <h1>Players</h1>
 
 <% @players.each do |player| %>
-  <li><%= link_to player.name, player_path(player) %></li>
+  <li><%= link_to player.name, player_positions_path(player) %></li>
 <% end %>
 <h1>Under 18</h1>
 <% @under_18.each do |player| %>
-  <li><%= link_to player.name, player_path(player) %></li>
+  <li><%= link_to player.name, player_positions_path(player) %></li>
 <% end %>
 
 <h1>Over 18</h1>
 <% @over_18.each do |player| %>
-  <li><%= link_to player.name, player_path(player) %></li>
+  <li><%= link_to player.name, player_positions_path(player) %></li>
 <% end %><br><br>
 
 <%=link_to "Go To Sports", sports_path %><br><br>

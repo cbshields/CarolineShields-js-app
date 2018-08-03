@@ -1,9 +1,15 @@
 <%= form_for @position do |f| %>
 
-  Player: <%= f.text_field :player_name %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
 
+  Player: <%= f.text_field :player, value:@player.name %><br>
+  <%= f.label "Position" %><br>
+  <%= f.text_field :name %><br>
 
+  <%= f.fields_for :sport do |sp| %>
+  Select Sport: <%= f.collection_select :sport_id, Sport.all, :id, :name, :include_blank => true %><br>
+  Or add a new sport:<br>
+    <%= sp.text_field :name %><br><br>
+  <% end %>
 
-<%= end %>
+  <%= f.submit %>
+<% end %>

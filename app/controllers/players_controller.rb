@@ -20,6 +20,7 @@ before_action :find_user, only: [:edit, :update, :destroy]
   end
 
   def create
+    binding.pry
     @player = Player.create(player_params)
     @player.uid = session[:uid]
     if @player.save
