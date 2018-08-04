@@ -27,7 +27,7 @@ before_action :find_player, only: [:index, :edit]
   end
 
   def create
-    @player = Player.find_by(name: position_params[:player])
+    @player = Player.find_by(id: position_params[:current_player_id])
 
     sport_id = position_params[:sport_id]
     position = Position.find_or_create_by(name: position_params[:name], sport_id: sport_id, player_id: @player.id)
@@ -63,9 +63,9 @@ before_action :find_player, only: [:index, :edit]
 
   def position_params
     params.require(:position).permit(
-      :player,
       :name,
       :sport_id,
+      :current_player_id,
       :sport => [:name]
       #sports_attributes:[:sport_id, :sport => [:name]]
     )
