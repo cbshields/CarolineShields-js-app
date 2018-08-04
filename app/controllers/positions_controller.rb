@@ -22,22 +22,26 @@ before_action :find_player, only: [:index, :edit]
   def new
     @player = Player.find_by(id: params[:player_id])
     @position = @player.positions.build
-    @sport = @position.build_sport
+    # @sport = @position.build_sport
     render :layout => "session"
   end
 
   def create
     @player = Player.find_by(name: position_params[:player])
-    new_position = position_params[:name]
+
     sport_id = position_params[:sport_id]
+    position = Position.find_or_create_by(name: position_params[:name], sport_id: sport_id, player_id: @player.id)
+
     new_sport = position_params[:sport][:name]
 
-    position = Position.find_or_create_by(name: new_position)
-    if !new_sport
-      new_sport = Sport.new(name: position_attributes[:sport][:name])
+    if !new_sport.empty?
+      new_sport_name = Sport.new(name: position_params[:sport][:name])
+      if new_sport_name.save
+        position.sport = new_sport_name
+        @player.positions << position
+      end
     end
-    new_sport = Sport.new(name: position_attributes[:sport][:name])
-    @position = Position.create
+    redirect_to player_path(@player)
 
   end
 
