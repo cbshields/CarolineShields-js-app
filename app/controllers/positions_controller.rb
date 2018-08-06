@@ -21,9 +21,13 @@ before_action :find_player, only: [:index, :edit]
 
   def new
     @player = Player.find_by(id: params[:player_id])
-    @position = @player.positions.build
-    # @sport = @position.build_sport
-    render :layout => "session"
+    if @player.id == session["user_id"]
+        # @sport = @position.build_sport
+      @position = @player.positions.build
+      render :layout => "session"
+    else
+      redirect_to players_path, alert: "You do not have access to add positions for that account."
+    end
   end
 
   def create
