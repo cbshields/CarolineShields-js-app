@@ -1,12 +1,11 @@
 <%= form_for @position do |f| %>
 
-    <%= f.hidden_field :current_player_id, :value => @player.id %>
-
+     <%= f.hidden_field :player_id,:value => @player.id %>
 
   <%= f.label "Position" %><br>
   <%= f.text_field :name %><br>
 
-  <%= f.fields_for :sport do |sp| %>
+  <%= f.fields_for :sport_attributes do |sp| %>
   Select Sport: <%= f.collection_select :sport_id, Sport.all, :id, :name, :include_blank => true %><br>
   Or add a new sport:<br>
     <%= sp.text_field :name %><br><br>

@@ -22,7 +22,6 @@ before_action :find_player, only: [:index, :edit]
   def new
     @player = Player.find_by(id: params[:player_id])
     if @player.id == session["user_id"]
-        # @sport = @position.build_sport
       @position = @player.positions.build
       render :layout => "session"
     else
@@ -31,22 +30,11 @@ before_action :find_player, only: [:index, :edit]
   end
 
   def create
-    @player = Player.find_by(id: position_params[:current_player_id])
+    @position = Position.new(position_params)
 
-    sport_id = position_params[:sport_id]
-    position = Position.find_or_create_by(name: position_params[:name], sport_id: sport_id, player_id: @player.id)
-
-    new_sport = position_params[:sport][:name]
-
-    if !new_sport.empty?
-      new_sport_name = Sport.new(name: position_params[:sport][:name])
-      if new_sport_name.save
-        position.sport = new_sport_name
-        @player.positions << position
-      end
+    if @position.save
+      redirect_to player_path(current_player)
     end
-    redirect_to player_path(@player)
-
   end
 
   def edit
@@ -69,9 +57,8 @@ before_action :find_player, only: [:index, :edit]
     params.require(:position).permit(
       :name,
       :sport_id,
-      :current_player_id,
-      :sport => [:name]
-      #sports_attributes:[:sport_id, :sport => [:name]]
+      :player_id,
+      sport_attributes:[:name]
     )
   end
 
