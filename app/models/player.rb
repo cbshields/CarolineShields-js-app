@@ -12,7 +12,8 @@ scope :over_18, lambda {where('age >= ?',18)}
     positions_attributes.values.each do |position_attributes|
        if !position_attributes[:name].empty? && position_attributes[:sport_id].empty?
         position = Position.find_or_create_by(name: position_attributes[:name])
-        new_sport = Sport.new(name: position_attributes[:sport][:name])
+        #new_sport = Sport.new(name: position_attributes[:name])
+        new_sport = Sport.new(name: position_attributes[:sport_attributes][:name])
         if new_sport.save
           position.sport = new_sport
           self.positions << position

@@ -30,6 +30,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'pry'
 
+gem 'rb-readline'
+
 gem 'rack-flash3'
 
 gem 'thin'
