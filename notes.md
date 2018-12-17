@@ -12,12 +12,4 @@ MODELS:
     -belongs_to :sport
     -Fields: Name, player_id, sport_id
 
-    ========================================================
-  Facebook Authentication (Facebook dev)
-  -change the website address to work pc ip Address
-  -change Valid Oauth redirect URI to use:
-  work: https://192.168.56.101:3000/auth/facebook/callback
-  home: https://192.168.1.12:3000/auth/facebook/callback
-
-  Nested route for Position
-  Nested route for edit/new form
+  start ssl: thin start --ssl
