@@ -4,7 +4,7 @@ class SessionController < ApplicationController
   end
 
   def create
-      @player = Player.find_by(params[:name])
+      @player = Player.find_by(name: params[:player][:name])
       #how to make this not as crazy, use flash[:alert] instead
 
     if !(@player && @player.authenticate(params[:password]))
