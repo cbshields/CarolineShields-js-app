@@ -1,7 +1,16 @@
 class SportsController < ApplicationController
-
   def index
-    @sports = Sport.all
+    if params[:player_id]
+      @player = Player.find_by(id: params[:player_id])
+      if @player.nil?
+        redirect_to players_path, alert: "Player not found"
+      else
+        @sports = @player.sports
+      end
+    else
+      @sports = Sport.all
+
+    end
   end
 
   def new
@@ -39,5 +48,9 @@ class SportsController < ApplicationController
   private
   def sport_params
       params.require(:sport).permit(:name)
+  end
+
+  def find_player
+    @player = Player.find(params[:player_id])
   end
 end

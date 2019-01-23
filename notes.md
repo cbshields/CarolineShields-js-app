@@ -13,3 +13,4 @@ MODELS:
     -Fields: Name, player_id, sport_id
 
   start ssl: thin start --ssl
+debug erb: <% debugger %>

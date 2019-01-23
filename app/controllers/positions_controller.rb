@@ -33,7 +33,7 @@ before_action :find_player, only: [:index, :edit]
     @position = Position.new(position_params)
 
     if @position.save
-      redirect_to player_path(current_player)
+      redirect_to player_path(current_user)
     end
   end
 
