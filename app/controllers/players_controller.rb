@@ -33,6 +33,10 @@ before_action :find_user, only: [:edit, :update, :destroy]
 
   def show
     @player = Player.find(params[:id])
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @player}
+    end
   end
 
   def edit

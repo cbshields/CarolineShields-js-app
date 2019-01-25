@@ -6,9 +6,17 @@ class SportsController < ApplicationController
         redirect_to players_path, alert: "Player not found"
       else
         @sports = @player.sports
+        respond_to do |f|
+          f.html {render :index}
+          f.json {render json: @sports}
+        end
       end
     else
       @sports = Sport.all
+      respond_to do |f|
+        f.html {render :index}
+        f.json {render json: @sports}
+      end
 
     end
   end
