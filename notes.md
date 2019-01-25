@@ -14,3 +14,4 @@ MODELS:
 
   start ssl: thin start --ssl
 debug erb: <% debugger %>
+view rake routes in browser: http://192.168.56.101:3000/rails/info/routes
