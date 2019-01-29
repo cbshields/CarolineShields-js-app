@@ -1,5 +1,5 @@
 $(function(){
-  console.log("players.js loaded")
+  // console.log("players.js loaded")
   $("a.load_sports").on("click", function(e){
     e.preventDefault()
 
@@ -8,8 +8,11 @@ $(function(){
       url: this.href,
       dataType: "json"
     }).done(function(response) {
+      const player = new Player(response)
       debugger
-      $("div.sport_list").html(response)
+      // player.playerhHTML()
+      // debugger
+      $("div.sport_list").html(player.playerHTML())
     })
 
 
@@ -25,19 +28,17 @@ class Player {
 }
 
 Player.prototype.playerHTML = function() {
-  return (`
-    <p>${this.name}</p>
-    `)
+  let sports = this.sports
+    // console.log(`here is the sports array: ${sports}`)
+  return sports.map(function(sport) {
+    //console.log(`here is the singular instance of sport: ${sport.name}`)
+    return (`<li>${sport.name}</li>`)
+  })
 }
-// $(function() {
-//   $("a.load_sports").on("click", function(e) {
-//     alert("You clicked on the link")
-//     e.preventDefault()
-//   })
-// })
-// $(document).ready(function() {
-//   $("a.load_sports").on("click", function(e) {
-//       alert("You clicked on the link")
-//       e.preventDefault()
-//     })
-//   })
+
+
+// Player.prototype.playerHTML = function() {
+//     return (`
+//       <li>${this.sports}</li>
+//       `)
+// }
