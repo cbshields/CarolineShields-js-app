@@ -9,10 +9,9 @@ $(function(){
       dataType: "json"
     }).done(function(response) {
       const player = new Player(response)
-      debugger
       // player.playerhHTML()
       // debugger
-      $("div.sport_list").html(player.playerHTML())
+      $(`div.sport_list-${player.id}`).html(player.playerHTML())
     })
 
 
@@ -22,6 +21,7 @@ $(function(){
 
 class Player {
   constructor(obj) {
+    this.id = obj.id
     this.name = obj.name
     this.sports = obj.sports
   }
@@ -35,10 +35,3 @@ Player.prototype.playerHTML = function() {
     return (`<li>${sport.name}</li>`)
   })
 }
-
-
-// Player.prototype.playerHTML = function() {
-//     return (`
-//       <li>${this.sports}</li>
-//       `)
-// }

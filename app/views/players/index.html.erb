@@ -2,20 +2,17 @@
 
 <% @players.each do |player| %>
 
-  <li><%= link_to player.name, player_path(player), :class => "load_sports" %></li>
-  <div class="sport_list">
-    this is where the data will land
-  <%#= render 'comments/comments' %>
-</div>
+  <br><li><%= link_to player.name, player_path(player), :class => "load_sports" %></li><br>
+  <div class="sport_list-<%=player.id%>"></div>
 <% end %>
 <h1>Under 18</h1>
 <% @under_18.each do |player| %>
-  <li><%= link_to player.name, player_positions_path(player) %></li>
+  <br><li><%= link_to player.name, player_path(player)%></li><br>
 <% end %>
 
 <h1>Over 18</h1>
 <% @over_18.each do |player| %>
-  <li><%= link_to player.name, player_positions_path(player) %></li>
+  <br><li><%= link_to player.name, player_path(player)%></li><br>
 <% end %><br><br>
 
 <%=link_to "Go To Sports", sports_path %><br><br>
