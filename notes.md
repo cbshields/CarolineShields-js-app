@@ -15,3 +15,12 @@ MODELS:
 start ssl: thin start --ssl
 debug erb: <% debugger %>
 view rake routes in browser: http://192.168.56.101:3000/rails/info/routes
+
+nested routes for new forms, put both resources:
+<%= form_for([@post, @comment], :remote => true) do |f|  %>
+  <%= f.text_area :content %>
+
+  <p><%= f.submit %></p>
+<% end %>
+
+when you don't know what "this" will render, do a console.log(this)
