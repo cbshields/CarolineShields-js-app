@@ -1,6 +1,6 @@
 <h1>Players</h1>
 
-<h2><%=link_to "New Player"%></h2>
+
 <% @players.each do |player| %>
 
   <br><li><%= link_to player.name, player_path(player), :class => "load_sports" %>&nbsp &nbsp<%=link_to "Details", player_path(player), :class => "player_details" %></li> <br>

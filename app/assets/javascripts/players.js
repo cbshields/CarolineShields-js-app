@@ -8,11 +8,13 @@ $(function(){
       url: this.href,
       dataType: "json"
     }).done(function(response) {
-      const playerSport = new Player(response)
-      // player.playerhHTML()
-      //debugger
-      //do I need to create 2 constructor objects or have everything I need in one?
-      $(`div.sport_list-${playerSport.id}`).html(playerSport.sportHTML())
+      const player = new Player(response)
+      const playerInfo = player.playerHTML()
+      const sportInfo = player.sportHTML()
+      $(`div.sport_list-${player.id}`).html(playerInfo + sportInfo)
+      debugger
+      //$(`div.sport_list-${playerSport.id}`).html(playerSport.sportHTML())
+
     })
   })
 
@@ -25,8 +27,15 @@ $(function(){
       dataType: "json"
     }).done(function(response){
       const player = new Player(response)
+
       $(`div.player_info-${player.id}`).html(player.playerHTML())
     })
+  })
+
+  $("a#new-sport-position").on("click", function(e) {
+    e.preventDefault()
+    console.log(this)
+    debugger
   })
 })
 
@@ -46,7 +55,7 @@ Player.prototype.sportHTML = function() {
   return sports.map(function(sport) {
     //console.log(`here is the singular instance of sport: ${sport.name}`)
     return (`<p>${sport.name}</p>`)
-  })
+  }).join('')
 }
 
 
