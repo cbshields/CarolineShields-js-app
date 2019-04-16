@@ -13,8 +13,18 @@ $(function(){
       // debugger
       $(`div.sport_list-${player.id}`).html(player.playerHTML())
     })
+  })
 
+  $("a.player_details").on("click", function(e) {
+    e.preventDefault()
 
+    $.ajax({
+      method: "GET",
+      url: this.href,
+      dataType: "json"
+    }).done(function(response){
+      debugger
+    })
   })
 })
 
