@@ -45,7 +45,7 @@ $(function(){
       const player = new Player(response)
       const playerInfo = player.playerHTML()
       const sportInfo = player.sportHTML()
-      $(`div.sport_list-${player.id}`).html(playerInfo + sportInfo)
+      $(`div.player_info-${player.id}`).html(playerInfo + sportInfo)
        // html(playerInfo + sportInfo)
       // $(`div.player_info-${player.id}`).html(player.playerHTML())
     })
