@@ -7,6 +7,7 @@
   <div class="player_info-<%=player.id%>"></div>
   <div class="sport_list-<%=player.id%>"></div>
 <% end %>
+
 <h1>Under 18</h1>
 <% @under_18.each do |player| %>
   <br><li><%= link_to player.name, player_path(player)%></li><br>
@@ -14,7 +15,7 @@
 
 <h1>Over 18</h1>
 <% @over_18.each do |player| %>
-  <br><li><%= link_to player.name, player_path(player)%></li><br>
+  <br><li><%=link_to player.name, player_path(player)%></li><br>
 <% end %><br><br>
 
 <%=link_to "Go To Sports", sports_path %><br><br>

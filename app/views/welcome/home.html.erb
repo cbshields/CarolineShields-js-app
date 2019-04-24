@@ -4,7 +4,7 @@
 <% if session[:user_id] %>
   Welcome to our site, <%=@player.name %>, please select where you would like to go:<br>
 
-  <%= link_to "Players", players_path %>&nbsp &nbsp   <%= link_to "Sports", sports_path %><br><br>
+  <%= link_to "Players", players_path%>&nbsp &nbsp   <%= link_to "Sports", sports_path %><br><br>
 
   <%= form_tag ({controller: 'session', action: 'destroy', method: 'post'}) do %>
     <input type=submit value='logout'>
