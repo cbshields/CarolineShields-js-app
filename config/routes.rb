@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
 
   get '/sports' => 'sports#index'
-  #post '/sports' => 'sports#create'
   get '/positions' => 'positions#index'
   resources :positions
   resources :sports
