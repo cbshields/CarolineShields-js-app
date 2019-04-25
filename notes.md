@@ -24,3 +24,7 @@ nested routes for new forms, put both resources:
 <% end %>
 
 when you don't know what "this" will render, do a console.log(this)
+
+remember to use back ticks when using console.log and variable: ie: console.log(`${players}`)
+
+if JS is not debugging properly, close the browser, then restart. May need to shut down rs as well

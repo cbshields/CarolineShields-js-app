@@ -1,42 +1,32 @@
 $(function(){
   // console.log("players.js loaded")
 
-  // $("a.view_players").on("click", function(e) {
-  //     e.preventDefault()
-  //     console.log(this)
-  //     debugger
-  //     $.ajax({
-  //       method: "GET",
-  //       url: this.href,
-  //       dataType: "json"
-  //     }).done(function(players) {
-  //       // how to debug what's in here
-  //       //debugger or console.log doesn't seem to work
-  //       // console.log(players)
-  //       // const Players = players
-  //     })
-  // })
+  $("a.view_players").on("click", function(e) {
+      e.preventDefault()
+      $.ajax({
+        method: "GET",
+        url: this.href,
+        dataType: "json"
+      }).done(function(players) {
+        let playerList = players
+        let playerListHTML = playerList.map(function(player) {
+        playerURL =+ `<li><a class="player_details" href="/players/${player.id}">${player.name}</a></li><br><br><div class="player_info-${player.id}>"></div>`
+        debugger
+          return (`${playerURL}`)
+        }).join('')
+        debugger
+        $(`div.player_list`).html(playerListHTML)
+        debugger
+        // console.log(`Players are: ${players}`)
 
 
-  // $("a.load_sports").on("click", function(e){
-  //   e.preventDefault()
-  //   $.ajax({
-  //     method: "GET",
-  //     url: this.href,
-  //     dataType: "json"
-  //   }).done(function(response) {
-  //     const player = new Player(response)
-  //     const playerInfo = player.playerHTML()
-  //     const sportInfo = player.sportHTML()
-  //     $(`div.sport_list-${player.id}`).html(playerInfo + sportInfo)
-  //     //$(`div.sport_list-${playerSport.id}`).html(playerSport.sportHTML())
-  //
-  //   })
-  // })
+      })
+  })
+
 
   $("a.player_details").on("click", function(e) {
     e.preventDefault()
-
+    debugger
     $.ajax({
       method: "GET",
       url: this.href,
