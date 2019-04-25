@@ -3,7 +3,7 @@
 Age: <%= @player.age %><br>
 Address: <%= @player.address %><br><br>
 
-<%= link_to "New Sport/Position", player_path(@player), id: "new-sport-position" %><br>
+<%= link_to "Create New Sport", controller: "sports", action: "new"%><br>
 <div id="new-sport-position-form-div">new sport/position</div>
 
 <h2>Sports</h2>

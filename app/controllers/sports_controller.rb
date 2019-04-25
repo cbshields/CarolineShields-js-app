@@ -28,7 +28,8 @@ class SportsController < ApplicationController
   def create
     @sport = Sport.create(sport_params)
     if @sport.save
-      redirect_to sport_path(@sport)
+      #redirect_to sport_path(@sport)
+      render json: @sport
     else
       render :new
     end
@@ -59,6 +60,6 @@ class SportsController < ApplicationController
   end
 
   def find_player
-    @player = Player.find(params[:player_id])
+    @player = Player.find(session[:user_id])
   end
 end
