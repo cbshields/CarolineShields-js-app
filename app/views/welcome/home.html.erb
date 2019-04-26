@@ -3,9 +3,16 @@
 
 <% if session[:user_id] %>
   Welcome to our site, <%=@player.name %>!<br><br>
+  <div class="player_sport_nav">
+    <%= link_to "Players", players_path%>&nbsp &nbsp <%= link_to "Sports", sports_path, class: "view_sports"%><br><br>
+  </div>
 
-  <div class="player_list"> 
-  <%= link_to "Players", players_path, class: "view_players"%>&nbsp &nbsp   <%= link_to "Sports", sports_path %><br><br>
+  <div id="sport_list">
+    
+  </div>
+
+
+
 
   <%= form_tag ({controller: 'session', action: 'destroy', method: 'post'}) do %>
     <input type=submit value='logout'>

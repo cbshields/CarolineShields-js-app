@@ -13,7 +13,7 @@ class SessionController < ApplicationController
 
 
         session[:user_id] = @player.id
-        redirect_to player_path(@player)
+        redirect_to root_path
 
   end
 

@@ -2,13 +2,11 @@
 
 <!-- ?<button type="button" id = "btnLoadPlayers">Load Players</button> -->
 <!-- <input id = "btnSubmit" type="submit" value="Release"/> -->
-<h2>JS PlayerList</h2>
-<div class="player_list">
+<!-- <h2>JS PlayerList</h2> -->
 
-</div>
 
-<h2>Rails Player List</h2>
 <% @players.each do |player| %>
+
   <br><li><%= link_to player.name, player_path(player)%>&nbsp &nbsp<%=link_to "Details", player_path(player), :class => "player_details" %></li> <br>
   <div class="player_info-<%=player.id%>"></div>
 <% end %>
