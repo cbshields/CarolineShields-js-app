@@ -4,12 +4,11 @@
 <% if session[:user_id] %>
   Welcome to our site, <%=@player.name %>!<br><br>
   <div class="player_sport_nav">
-    <%= link_to "Players", players_path%>&nbsp &nbsp <%= link_to "Sports", sports_path, class: "view_sports"%><br><br>
+    <%= link_to "Players", players_path%>&nbsp &nbsp <%= link_to "Sports", sports_path, class: "view_sports"%>&nbsp &nbsp<%= link_to "Sports Sorted", sports_path, class: "view_sports_sorted"%><br><br>
   </div>
 
-  <div id="sport_list">
-    
-  </div>
+  <div id="sport_list"></div>
+
 
 
 
